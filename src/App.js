@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import './App.css';
+import { GMAP_API_KEY } from './constants';
 
 // We will use these things from the lib
 // https://react-google-maps-api-docs.netlify.com/
@@ -23,7 +24,7 @@ function App() {
   // Load the Google maps scripts
   const { isLoaded } = useLoadScript({
     // Enter your own Google Maps API key
-    googleMapsApiKey: ""
+    googleMapsApiKey: GMAP_API_KEY
   });
 
   // The places I want to create markers for.
@@ -85,7 +86,7 @@ function App() {
           // Do stuff on map initial laod
           onLoad={loadHandler}
           // Save the current center position in state
-          onCenterChanged={() => setCenter(mapRef.getCenter().toJSON())}
+          // onCenterChanged={() => mapRef ? setCenter(mapRef.getCenter().toJSON()): null}
           // Save the user's map click position
           onClick={e => setClickedLatLng(e.latLng.toJSON())}
           center={center}
@@ -105,7 +106,7 @@ function App() {
               icon={{
                 path:
                   "M12.75 0l-2.25 2.25 2.25 2.25-5.25 6h-5.25l4.125 4.125-6.375 8.452v0.923h0.923l8.452-6.375 4.125 4.125v-5.25l6-5.25 2.25 2.25 2.25-2.25-11.25-11.25zM10.5 12.75l-1.5-1.5 5.25-5.25 1.5 1.5-5.25 5.25z",
-                fillColor: "#0000ff",
+                fillColor: "#ff00ff",
                 fillOpacity: 1.0,
                 strokeWeight: 0,
                 scale: 1.25
